@@ -2,6 +2,7 @@ from utilities import compare, find
 from decorators.game_play import can_play
 from decorators.output import print_play, print_board
 
+
 class Player:
     def __init__(self, name):
         self.name = name
@@ -14,13 +15,13 @@ class Player:
     def draw_tile(self, pile_ref):
         tile = pile_ref[0]
         self.tiles.append(tile)
-        self.can_play = False
         pile_ref.remove(tile)
+        self.can_play = False
         return f'{self.name} can\'t play. Drawing tile <{tile.side1}:{tile.side2}>'
 
     @can_play
-    @print_play
     @print_board
+    @print_play
     def place_tile(self, tile, played_tiles_ref):
         matched_tile = find.first(played_tiles_ref)
         if tile.side1 == matched_tile.side1:
@@ -33,6 +34,7 @@ class Player:
         else:
             matched_tile = find.last(played_tiles_ref)
             played_tiles_ref.append(tile.flip())
+        self.can_play = False
         return f'{self.name} plays <{tile.side1}:{tile.side2}> to connect to tile ' \
                f'<{matched_tile.side1}:{matched_tile.side2}> on the board.'
 
@@ -44,7 +46,6 @@ class Player:
             return
         self.place_tile(doubles[0], played_tiles_ref)
         self.tiles.remove(doubles[0])
-        self.can_play = False
 
     @can_play
     def play_blocker(self, played_tiles_ref):
@@ -53,7 +54,6 @@ class Player:
             return
         self.place_tile(blockers[0], played_tiles_ref)
         self.tiles.remove(blockers[0])
-        self.can_play = False
 
     @can_play
     def play_highest_tile(self, played_tiles_ref):
@@ -63,7 +63,6 @@ class Player:
             return
         self.place_tile(tiles[0], played_tiles_ref)
         self.tiles.remove(tiles[0])
-        self.can_play = False
 
     def play(self, played_cards_ref, pile_ref):
         self.can_play = True

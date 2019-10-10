@@ -20,4 +20,4 @@ def first(played_tiles):
 
 
 def last(played_tiles):
-    return played_tiles[len(played_tiles) - 1]
+    return played_tiles[-1]

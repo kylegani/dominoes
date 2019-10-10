@@ -7,7 +7,8 @@ def print_play(f):
 
 
 def print_board(f):
-    def wrap(*args, **kwargs):
+    def wrap(*args):
+        result = f(*args)
         print(f'The board is now:', ' '.join([f'<{tile.side1}:{tile.side2}>' for tile in args[2]]))
-        return f(*args, **kwargs)
+        return result
     return wrap

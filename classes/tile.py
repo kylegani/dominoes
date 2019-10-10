@@ -11,3 +11,6 @@ class Tile:
 
     def tally(self):
         return self.side1 - self.side2
+
+    def eq(self, other):
+        return self.side1 == other.side1 and self.side2 == other.side2
