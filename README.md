@@ -15,8 +15,7 @@ until they can.
 
 ### Assumptions
 - The players turn is ended when they pick up a tile.
-- A stale mate (also known as a Milo) should never occur (this means that a combination of all tiles of one type are played with the value of this tile at both ends; thus preventing users from continuing play).
-
+- A stale mate (also known as a Milo) should occur when all tiles have been drawn an players can no longer play).
 
 ### Language choice
 It is a common belief that applications built in the language most suited to the project is the best way to build software. Due to the algorithmic nature of this project, a language that is more geared toward processing and isolating data sets (with a proven performance track-record), Python, has been chosen.

@@ -13,11 +13,15 @@ class Player:
     @can_play
     @print_play
     def draw_tile(self, pile_ref):
-        tile = pile_ref[0]
-        self.tiles.append(tile)
-        pile_ref.remove(tile)
-        self.can_play = False
-        return f'{self.name} can\'t play. Drawing tile <{tile.side1}:{tile.side2}>'
+        try:
+            tile = pile_ref[0]
+            self.tiles.append(tile)
+            pile_ref.remove(tile)
+            self.can_play = False
+            return f'{self.name} can\'t play. Drawing tile <{tile.side1}:{tile.side2}>'
+        except IndexError:
+            print('The game has resulted in a stale mate.')
+            exit()
 
     @can_play
     @print_board
