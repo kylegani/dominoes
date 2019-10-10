@@ -41,32 +41,29 @@ class Player:
         doubles = [tile for tile in self.tiles if compare.is_double(tile) and find.matching_tile(tile, played_tiles_ref)]
         doubles.sort(key=lambda tile: tile.side1)
         if not len(doubles):
-            return False
+            return
         self.place_tile(doubles[0], played_tiles_ref)
         self.tiles.remove(doubles[0])
         self.can_play = False
-        return True
 
     @can_play
     def play_blocker(self, played_tiles_ref):
         blockers = [tile for tile in self.tiles if compare.is_blocker(tile, played_tiles_ref)]
         if not len(blockers):
-            return False
+            return
         self.place_tile(blockers[0], played_tiles_ref)
         self.tiles.remove(blockers[0])
         self.can_play = False
-        return True
 
     @can_play
     def play_highest_tile(self, played_tiles_ref):
         tiles = [tile for tile in self.tiles if find.matching_tile(tile, played_tiles_ref)]
         tiles.sort(key=lambda tile: tile.tally())
         if len(tiles) < 1:
-            return False
+            return
         self.place_tile(tiles[0], played_tiles_ref)
         self.tiles.remove(tiles[0])
         self.can_play = False
-        return True
 
     def play(self, played_cards_ref, pile_ref):
         self.can_play = True

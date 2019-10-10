@@ -66,7 +66,7 @@ class TestIsDouble(unittest.TestCase):
 class TestIsBlocker(unittest.TestCase):
     tile = Tile(5, 4)
     played_tiles_mismatch = [Tile(2, 2), Tile(4, 4)]
-    played_tiles_match = [Tile(5, 2), Tile(2, 4)]
+    played_tiles_match = [Tile(4, 2), Tile(2, 5)]
 
     def test_is_blocker_success(self):
         """

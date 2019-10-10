@@ -9,6 +9,12 @@ def matching_tile(tile, played_tiles):
            compare.matches_right(flipped(tile), last(played_tiles))
 
 
+def exists(tile, tiles):
+    return len(list(filter(lambda iterator: (iterator.side1 == tile.side1 and iterator.side2 == tile.side2) or
+                                            (flipped(iterator).side1 == tile.side2 and
+                                             flipped(iterator).side2 == tile.side2), tiles))) > 0
+
+
 def first(played_tiles):
     return played_tiles[0]
 
